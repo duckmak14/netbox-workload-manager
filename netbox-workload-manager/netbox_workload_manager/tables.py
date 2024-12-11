@@ -2,7 +2,7 @@ from django.db.models import Count, F, Value
 import django_tables2 as tables
 from netbox.tables import NetBoxTable, ToggleColumn, columns
 from netbox_workload_manager.models import WorkloadCluster, WorkloadService, WorkloadClusterType
-
+from tenancy.models import Contact
 
 class WorkloadClusterTypeTable(NetBoxTable):
     """Table for displaying WorkloadClusterType objects."""
@@ -82,3 +82,24 @@ class WorkloadServiceTable(NetBoxTable):
             "gpu",
             "contact",
         )
+
+# table contact in tabview function workload cluster
+# class WorkloadClusterContactTable(NetBoxTable):
+#     """Table for displaying Contact in Workload Cluster objects."""
+    
+#     pk = ToggleColumn()
+#     name = tables.LinkColumn()
+#     class Meta(NetBoxTable.Meta):
+#         model = Contact
+#         fields = (
+#             "pk",
+#             "name",
+#             "tags",
+#             "description",
+#         )
+
+#         default_columns = (
+#             "pk",
+#             "name",
+#             "description",
+#         )

@@ -1,8 +1,9 @@
 Metadata-Version: 2.1
 Name: netbox-workload-manager
-Version: 1.1.1
-Summary: Workload Manager Netbox Plugin
-Author-email: ducna <ducna-hcd@gmail.com>
+Version: 1.0.1
+Summary: Workload Manager Netbox Plugin fork from netbox-slm 1.7.0
+Home-page: https://github.com/duckmak14/netbox-workload-manager.git
+Author-email: ducna <ducna@hcd@gmail.com.vn>
 License: Apache-2.0
 Classifier: Environment :: Web Environment
 Classifier: Framework :: Django

@@ -1,12 +1,14 @@
 from netbox.views import generic
-from netbox_workload_manager import forms, tables
+from netbox_workload_manager import forms, tables, filtersets, models
 from netbox_workload_manager.models import WorkloadClusterType
+
 
 
 class WorkloadClsuterTypeListView(generic.ObjectListView):
     """View for listing all existing Workload Cluster Type."""
 
     queryset = WorkloadClusterType.objects.all()
+    filterset = filtersets.WorkloadClusterTypeFilterSet
     filterset_form = forms.WorkloadClusterTypeForm
     table = tables.WorkloadClusterTypeTable
 
@@ -26,7 +28,12 @@ class WorkloadClsuterTypeDeleteView(generic.ObjectDeleteView):
 
     queryset = WorkloadClusterType.objects.all()
 
-
+# Delete multiple item 
 class WorkloadClsuterTypeBulkDeleteView(generic.BulkDeleteView):
     queryset = WorkloadClusterType.objects.all()
     table = tables.WorkloadClusterTypeTable
+
+# Import file to add multiple item 
+class WorkloadClsuterTypeBulkImportView(generic.BulkImportView):
+    queryset = WorkloadClusterType.objects.all()
+    model_form = forms.WorkloadClusterTypeImportForm

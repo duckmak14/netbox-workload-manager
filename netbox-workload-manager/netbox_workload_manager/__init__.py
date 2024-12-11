@@ -1,10 +1,9 @@
 from netbox.plugins import PluginConfig
 
-__version__ = "1.0.0"
+__version__ = "1.1.1"
 
 
-class WorkLoadManagerConfig(PluginConfig):
-    #name = "netbox-workload-manager"
+class WorkloadManagerConfig(PluginConfig):
     name = "netbox_workload_manager"
     verbose_name = "Workload Manager"
     description = "Workload Manager Netbox Plugin."
@@ -16,4 +15,4 @@ class WorkLoadManagerConfig(PluginConfig):
     default_settings = {"version_info": False}
 
 
-config = WorkLoadManagerConfig
+config = WorkloadManagerConfig

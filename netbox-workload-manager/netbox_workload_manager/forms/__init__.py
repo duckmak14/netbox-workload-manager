@@ -1,3 +1,5 @@
-from .workload_cluster import WorkloadClusterForm, WorkloadClusterFilterForm
-from .workload_cluster_type import WorkloadClusterTypeForm, WorkloadClusterTypeFilterForm
-from .workload_service import WorkloadServiceForm , WorkloadServiceFilterForm 
+from .workload_cluster_type import WorkloadClusterTypeForm, WorkloadClusterTypeFilterForm, WorkloadClusterTypeImportForm
+
+from .workload_cluster import WorkloadClusterForm, WorkloadClusterFilterForm, WorkloadClusterImportForm
+
+from .workload_service import WorkloadServiceForm , WorkloadServiceFilterForm, WorkloadServiceImportForm

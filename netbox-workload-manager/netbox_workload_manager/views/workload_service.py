@@ -1,5 +1,5 @@
 from netbox.views import generic
-from netbox_workload_manager import forms, tables
+from netbox_workload_manager import forms, tables, filtersets
 from netbox_workload_manager.models import WorkloadService
 
 
@@ -7,6 +7,7 @@ class WorkloadServiceListView(generic.ObjectListView):
     """View for listing all existing Workload Service."""
 
     queryset = WorkloadService.objects.all()
+    filterset = filtersets.WorkloadServiceFilterSet
     filterset_form = forms.WorkloadServiceFilterForm
     table = tables.WorkloadServiceTable
 
@@ -26,6 +27,12 @@ class WorkloadServiceDeleteView(generic.ObjectDeleteView):
 
     queryset = WorkloadService.objects.all()
 
+# Delete multiple item 
 class WorkloadServiceBulkDeleteView(generic.BulkDeleteView):
     queryset = WorkloadService.objects.all()
     table = tables.WorkloadServiceTable
+
+# Import file to add multiple item 
+class WorkloadServiceBulkImportView(generic.BulkImportView):
+    queryset = WorkloadService.objects.all()
+    model_form = forms.WorkloadServiceImportForm

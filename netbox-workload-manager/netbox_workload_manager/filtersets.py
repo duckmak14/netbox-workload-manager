@@ -19,7 +19,6 @@ class WorkloadClusterTypeFilterSet(NetBoxModelFilterSet):
         qs_filter = (
             Q(name__icontains=value)
             | Q(description__icontains=value)
-            | Q(comments__icontains=value)
         )
         return queryset.filter(qs_filter)
 
@@ -29,7 +28,8 @@ class WorkloadClusterFilterSet(NetBoxModelFilterSet):
 
     class Meta:
         model = WorkloadCluster
-        fields = ("type",)
+        #fields = ("workload_cluster_type",)
+        fields = tuple()
 
     def search(self, queryset, name, value):
         """Perform the filtered search."""
@@ -37,21 +37,14 @@ class WorkloadClusterFilterSet(NetBoxModelFilterSet):
             return queryset
         qs_filter = (
             Q(name__icontains=value)
-            | Q(workload_cluster_type__name__icontains=value)
-            | Q(contact__icontains=value)
-            | Q(devices__icontains=value)
+            | Q(type__name__icontains=value)
+            | Q(contact__name__icontains=value)
         )
         return queryset.filter(qs_filter)
 
 
 class WorkloadServiceFilterSet(NetBoxModelFilterSet):
     """Filter capabilities for WorkloadService instances."""
-
-    contact_id = django_filters.ModelMultipleChoiceFilter(
-        field_name='contact',
-        queryset=Contact.objects.all(),
-        label='Contact (ID)',
-    )
 
     class Meta:
         model = WorkloadService
@@ -62,11 +55,9 @@ class WorkloadServiceFilterSet(NetBoxModelFilterSet):
         if not value.strip():
             return queryset
         qs_filter = (
-            Q(workload_cluster_name__icontains=value)
+            Q(workload_cluster__name__icontains=value)
             | Q(namespace__icontains=value)
             | Q(name__icontains=value)
             | Q(application__icontains=value)
-            | Q(description__icontains=value)
-            | Q(gpu__icontains=value)
         )
         return queryset.filter(qs_filter)
